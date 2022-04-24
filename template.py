@@ -3,17 +3,17 @@ from abc import ABC, abstractmethod
 
 class AbstractClass(ABC):
     """
-    The Abstract Class defines a template method that contains a skeleton of
-    some algorithm, composed of calls to (usually) abstract primitive
-    operations.
+    La clase abstracta define un método de plantilla que contiene un esqueleto de
+    algún algoritmo, compuesto de llamadas a (generalmente) primitivas abstractas
+    operaciones.
 
-    Concrete subclasses should implement these operations, but leave the
-    template method itself intact.
+    Las subclases concretas deberían implementar estas operaciones, pero dejar el
+    método de plantilla en sí intacto.  
     """
 
     def template_method(self) -> None:
         """
-        The template method defines the skeleton of an algorithm.
+        El método de plantilla define el esqueleto de un algoritmo.
         """
 
         self.base_operation1()
@@ -24,18 +24,18 @@ class AbstractClass(ABC):
         self.base_operation3()
         self.hook2()
 
-    # These operations already have implementations.
+    # Estas operaciones ya tienen implementaciones.
 
     def base_operation1(self) -> None:
-        print("AbstractClass says: I am doing the bulk of the work")
+        print("AbstractClass dice: Estoy haciendo la mayor parte del trabajo")
 
     def base_operation2(self) -> None:
-        print("AbstractClass says: But I let subclasses override some operations")
+        print("AbstractClass dice: Pero dejo que las subclases anulen algunas operaciones")
 
     def base_operation3(self) -> None:
-        print("AbstractClass says: But I am doing the bulk of the work anyway")
+        print("AbstractClass dice: Pero estoy haciendo la mayor parte del trabajo de todos modos")
 
-    # These operations have to be implemented in subclasses.
+    # Estas operaciones deben implementarse en subclases.
 
     @abstractmethod
     def required_operations1(self) -> None:
@@ -45,10 +45,10 @@ class AbstractClass(ABC):
     def required_operations2(self) -> None:
         pass
 
-    # These are "hooks." Subclasses may override them, but it's not mandatory
-    # since the hooks already have default (but empty) implementation. Hooks
-    # provide additional extension points in some crucial places of the
-    # algorithm.
+    # Estos son "ganchos". Las subclases pueden anularlas, pero no es obligatorio
+    # ya que los ganchos ya tienen una implementación predeterminada (pero vacía). Manos
+    # proporcionar puntos de extensión adicionales en algunos lugares cruciales del
+    #algoritmo.
 
     def hook1(self) -> None:
         pass
@@ -59,8 +59,8 @@ class AbstractClass(ABC):
 
 class ConcreteClass1(AbstractClass):
     """
-    Concrete classes have to implement all abstract operations of the base
-    class. They can also override some operations with a default implementation.
+    Las clases concretas tienen que implementar todas las operaciones abstractas de la base.
+    clase. También pueden anular algunas operaciones con una implementación predeterminada.
     """
 
     def required_operations1(self) -> None:
@@ -72,8 +72,8 @@ class ConcreteClass1(AbstractClass):
 
 class ConcreteClass2(AbstractClass):
     """
-    Usually, concrete classes override only a fraction of base class'
-    operations.
+    Por lo general, las clases concretas anulan solo una fracción de la clase base.
+    operaciones.
     """
 
     def required_operations1(self) -> None:
@@ -88,9 +88,9 @@ class ConcreteClass2(AbstractClass):
 
 def client_code(abstract_class: AbstractClass) -> None:
     """
-    The client code calls the template method to execute the algorithm. Client
-    code does not have to know the concrete class of an object it works with, as
-    long as it works with objects through the interface of their base class.
+El código del cliente llama al método de plantilla para ejecutar el algoritmo. Cliente
+    código no tiene que saber la clase concreta de un objeto con el que trabaja, como
+    siempre que trabaje con objetos a través de la interfaz de su clase base.
     """
 
     # ...

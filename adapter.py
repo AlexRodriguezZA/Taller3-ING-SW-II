@@ -5,18 +5,18 @@
 
 class Target:
     """
-    The Target defines the domain-specific interface used by the client code.
+    El destino define la interfaz específica del dominio utilizada por el código del cliente.
     """
 
     def request(self) -> str:
-        return "Target: The default target's behavior."
+        return "Objetivo: el comportamiento del objetivo predeterminado."
 
 
 class Adaptee:
     """
-    The Adaptee contains some useful behavior, but its interface is incompatible
-    with the existing client code. The Adaptee needs some adaptation before the
-    client code can use it.
+    El Adaptee contiene algunos comportamientos útiles, pero su interfaz es incompatible
+    con el código de cliente existente. El Adaptado necesita alguna adaptación antes de que el
+    el código del cliente puede usarlo.
     """
 
     def specific_request(self) -> str:
@@ -25,8 +25,8 @@ class Adaptee:
 
 class Adapter(Target, Adaptee):
     """
-    The Adapter makes the Adaptee's interface compatible with the Target's
-    interface via multiple inheritance.
+    El adaptador hace que la interfaz del Adaptee sea compatible con la del Target
+    Interfaz a través de herencia múltiple.
     """
 
     def request(self) -> str:
@@ -35,23 +35,23 @@ class Adapter(Target, Adaptee):
 
 def client_code(target: "Target") -> None:
     """
-    The client code supports all classes that follow the Target interface.
+    El código del cliente admite todas las clases que siguen la interfaz de Target.
     """
 
     print(target.request(), end="")
 
 
 if __name__ == "__main__":
-    print("Client: I can work just fine with the Target objects:")
+    print("Cliente: puedo trabajar bien con los objetos de destino:")
     target = Target()
     client_code(target)
     print("\n")
 
     adaptee = Adaptee()
-    print("Client: The Adaptee class has a weird interface. "
-          "See, I don't understand it:")
+    print("Cliente: La clase Adaptee tiene una interfaz rara."
+          "Mira, no lo entiendo:")
     print(f"Adaptee: {adaptee.specific_request()}", end="\n\n")
 
-    print("Client: But I can work with it via the Adapter:")
+    print("Cliente: Pero puedo trabajar con él a través del Adaptador:")
     adapter = Adapter()
     client_code(adapter)
